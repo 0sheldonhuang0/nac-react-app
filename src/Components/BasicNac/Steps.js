@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Stepbar from "./Stepbar";
-import Setup from "./Setup";
+import Setup from "./Authentication";
 import Preview from "./Espace.js";
 import Welcome from "./Welcome.js";
 import { useSelector } from "react-redux"; //新版里导入useDispatch和useSeletor
