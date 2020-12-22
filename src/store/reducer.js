@@ -1,22 +1,20 @@
 const initialState = {
   content: "欢迎使用 nac-https://xd.sh.cn/nac",
-  format: {
-    format: "Pdf16",
-    font: "fontFz",
-    fontSizeA: "fontMiddle",
-    fontSizeB: "fontMiddle",
-    cardNum: true,
+  userInfo: {
+    name: undefined,
+    email: undefined,
+    uid: undefined,
   },
   successedData: false,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_FORMAT": {
-      const newTemp = action.format;
+    case "ADD_USERINFO": {
+      const newTemp = action.userInfo;
       return {
         ...state,
-        format: newTemp,
+        userInfo: newTemp,
       };
     }
     case "ADD_CONTENT": {
