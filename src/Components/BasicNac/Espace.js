@@ -18,12 +18,8 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function Preview() {
+export default function Espace() {
   const classes = useStyles();
-
-  const format = useSelector((state) => state.format);
-  //获取reducer上的数据
-  console.log(format.format);
 
   return (
     <React.Fragment>

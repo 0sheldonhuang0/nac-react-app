@@ -68,6 +68,10 @@ export default function Welcome() {
         storeUserInfo(userInfo);
         console.log(userInfo)
       } else {
+        userInfo.name = undefined;
+        userInfo.email = undefined;
+        userInfo.uid = undefined;
+        storeUserInfo(userInfo);
         console.log("Aucun utilisateur n'est connecté.");
       }
     });

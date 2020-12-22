@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Stepbar from "./Stepbar";
 import Setup from "./Authentication";
-import Preview from "./Espace.js";
+import Espace from "./Espace.js";
 import Welcome from "./Welcome.js";
 import { useSelector } from "react-redux"; //新版里导入useDispatch和useSeletor
 import ScrollToTop from "../ScrollToTop";
@@ -22,8 +22,6 @@ function getStepContent(stepIndex) {
       return "ETAPE 2";
     case 2:
       return "ETAPE 3";
-    case 3:
-      return "";
     default:
       return "Unknown stepIndex";
   }
@@ -36,9 +34,7 @@ function getMainContent(stepIndex) {
     case 1:
       return <Setup />;
     case 2:
-      return <Setup />;
-    case 3:
-      return <Preview />;
+      return <Espace />;
     default:
       return "Unknown stepIndex";
   }
@@ -80,7 +76,7 @@ export default function Ppmemo() {
           {getMainContent(activeStep)}
         </Grid>
         <div className={classes.fixedHeight100}>
-          {activeStep === steps.length ? (
+          {activeStep === steps.length - 1 ? (
             <div>
               <Button onClick={handleReset} variant="contained">
                 Logout
@@ -107,7 +103,7 @@ export default function Ppmemo() {
                   className={classes.buttonArea}
                   disabled={successedData === false}
                 >
-                  {activeStep === steps.length - 1 ? "OK" : "L'étape suivante"}
+                  L'étape suivante
                 </Button>
               </div>
             </div>
