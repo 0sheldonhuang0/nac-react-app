@@ -60,9 +60,7 @@ export default function Ppmemo() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+
 
   const successedData = useSelector((state) => state.successedData);
   //获取reducer上的数据
@@ -78,8 +76,8 @@ export default function Ppmemo() {
         <div className={classes.fixedHeight100}>
           {activeStep === steps.length - 1 ? (
             <div>
-              <Button onClick={handleReset} variant="contained">
-                Logout
+              <Button variant="contained">
+                Déconnexion
               </Button>
             </div>
           ) : (
