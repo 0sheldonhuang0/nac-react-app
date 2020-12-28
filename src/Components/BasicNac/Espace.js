@@ -1,5 +1,6 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
@@ -15,6 +16,9 @@ import Paper from "@material-ui/core/Paper";
 import EspaceSamplePicture from "../../images/espace_sample_picture.jpg";
 
 const useStyles = makeStyles(() => ({
+  buttonArea: {
+    margin: "0 10px 10px 10px",
+  },
   divider: {
     margin: "20px",
   },
@@ -31,7 +35,7 @@ const useStyles = makeStyles(() => ({
   },
   textStyle: {
     margin: "10px",
-    textIndent: "25px",
+    textIndent: "0px",
     lineHeight: "30px",
   },
   titleStyle: {
@@ -87,10 +91,19 @@ export default function Espace() {
       <div>
         {/* 账号信息 */}
         <Grid container spacing={1}>
-          <Grid item xs={12} md={12} lg={12} className={classes.paper}>
-            <Typography variant="h6" align="left">
-              Bienvenue dans votre espace
-            </Typography>
+          <Grid item xs={12} md={12} lg={5} className={classes.paper}>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.buttonArea}
+            >
+              Bilan de la jour
+            </Button>
+            <Button variant="contained" className={classes.buttonArea}>
+              Mettre à jour
+            </Button>
+          </Grid>
+          <Grid item xs={12} md={12} lg={6} className={classes.paper}>
             <Typography variant="body2" align="left">
               ✅ Votre compte : sheldonhuang1994@gmail.com
             </Typography>
@@ -102,7 +115,15 @@ export default function Espace() {
             </Typography>
           </Grid>
         </Grid>
+        <Divider variant="middle" className={classes.divider} />
         <Grid container spacing={1}>
+          <Grid item xs={12} md={12} lg={7} className={classes.paper}>
+            <img
+              src={EspaceSamplePicture}
+              alt=""
+              className={classes.imageStyle}
+            />
+          </Grid>
           <Grid item xs={12} md={12} lg={4} className={classes.paper}>
             <Typography variant="caption" className={classes.textStyle}>
               下表中为最近您NAC的数量情况
@@ -128,14 +149,8 @@ export default function Espace() {
               </Table>
             </TableContainer>
           </Grid>
-          <Grid item xs={12} md={12} lg={7} className={classes.paper}>
-            <img
-              src={EspaceSamplePicture}
-              alt=""
-              className={classes.imageStyle}
-            />
-          </Grid>
         </Grid>
+        <Divider variant="middle" className={classes.divider} />
         <Grid item xs={12} md={12} lg={12} className={classes.paper}>
           <Typography variant="caption" className={classes.textStyle}>
             下表中为最近您NAC的活动情况
@@ -163,6 +178,7 @@ export default function Espace() {
             </Table>
           </TableContainer>
         </Grid>
+        <Divider variant="middle" className={classes.divider} />
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12} className={classes.paper}>
             <img

@@ -76,9 +76,6 @@ export default function Ppmemo() {
         <div className={classes.fixedHeight100}>
           {activeStep === steps.length - 1 ? (
             <div>
-              <Button variant="contained">
-                Déconnexion
-              </Button>
             </div>
           ) : (
             <div>
