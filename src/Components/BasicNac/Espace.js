@@ -53,21 +53,35 @@ const useStyles = makeStyles(() => ({
 
 function readUserData() {
   // Récupérer les données de la Firebase
-  var userId = firebase.auth().currentUser;
+  // var userId = firebase.auth().currentUser;
   var adaRef = firebase
     .database()
     .ref("/cibles/" + "sheldonhuang1994_7822")
     .once("value")
     .then(
       function(snapshot) {
-        var a = snapshot.exportVal(); 
-        console.log(a)
+        var targetPosition = snapshot.exportVal(); 
+        var result = [];
+        console.log(targetPosition)
+        
+        console.log(targetPosition[ProcessingObject(targetPosition).slice(-1)])
+        // 总是显示最新的那组数据
+        var targetPositionDetail = targetPosition[ProcessingObject(targetPosition).slice(-1)];
+        console.log(targetPositionDetail.targetPosition) // String
+        console.log(targetPositionDetail.timeStamp) // 时间戳 int
       }
     )
-    
-  //  var key = adaRef.key;
-    console.log(adaRef)
-    console.log(userId)
+}
+
+// 处理对象 object， 返回一个数组
+function ProcessingObject(object){
+  var result = [];
+  for (var i in object) {
+    if (object.hasOwnProperty(i)) {
+        result.push(i);
+    }
+  }
+  return result
 }
 
 // Données de table
@@ -112,6 +126,9 @@ const nacDetailData = [
 
 export default function Espace() {
   const classes = useStyles();
+
+  console.log(nacTypeData);
+  console.log(nacDetailData);
 
   // Données de détection d'état
   const userInfo = useSelector((state) => state.userInfo);
