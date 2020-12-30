@@ -15,6 +15,11 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import EspaceSamplePicture from "../../images/espace_sample_picture.jpg";
 
+// Firebase App (the core Firebase SDK) is always required and must be listed first
+import firebase from "firebase/app";
+require("firebase/auth");
+require("firebase/database");
+
 const useStyles = makeStyles(() => ({
   buttonArea: {
     margin: "0 10px 10px 10px",
@@ -46,6 +51,26 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+function readUserData() {
+  // Récupérer les données de la Firebase
+  var userId = firebase.auth().currentUser;
+  var adaRef = firebase
+    .database()
+    .ref("/cibles/" + "sheldonhuang1994_7822")
+    .once("value")
+    .then(
+      function(snapshot) {
+        var a = snapshot.exportVal(); 
+        console.log(a)
+      }
+    )
+    
+  //  var key = adaRef.key;
+    console.log(adaRef)
+    console.log(userId)
+}
+
+// Données de table
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.primary.main,
@@ -83,12 +108,18 @@ const nacDetailData = [
   createDetailData("Poisson", "zone 1A [50,50]", "bouger"),
 ];
 
+// Données de détection d'état
+
 export default function Espace() {
   const classes = useStyles();
+
+  // Données de détection d'état
+  const userInfo = useSelector((state) => state.userInfo);
 
   return (
     <React.Fragment>
       <div>
+        {readUserData()}
         {/* 账号信息 */}
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={5} className={classes.paper}>
@@ -97,7 +128,7 @@ export default function Espace() {
               color="primary"
               className={classes.buttonArea}
             >
-              Bilan de la jour
+              Bilan du jour
             </Button>
             <Button variant="contained" className={classes.buttonArea}>
               Mettre à jour
@@ -105,13 +136,13 @@ export default function Espace() {
           </Grid>
           <Grid item xs={12} md={12} lg={6} className={classes.paper}>
             <Typography variant="body2" align="left">
-              ✅ Votre compte : sheldonhuang1994@gmail.com
+              ✅ Votre compte : {userInfo.email}
             </Typography>
             <Typography variant="body2" align="left">
-              ✅ L'observation à distance est prête.
+              ❎ L'observation à distance n'est pas prête.
             </Typography>
             <Typography variant="body2" align="left">
-              ✅ La connexion à la base de données est réussie.
+              ✅ La connexion à la base de données n'est pas réussie.
             </Typography>
           </Grid>
         </Grid>
