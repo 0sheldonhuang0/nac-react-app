@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
@@ -51,37 +51,62 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function readUserData() {
+function userNameGenerate(userEmail) {
+  console.log(userEmail);
+  userEmail = userEmail.replace(/\./g, "_").replace(/@/g, "__");
+  console.log(userEmail);
+  return userEmail;
+}
+
+function readUserData(userEmail) {
   // Récupérer les données de la Firebase
   // var userId = firebase.auth().currentUser;
   var adaRef = firebase
     .database()
-    .ref("/cibles/" + "sheldonhuang1994_7822")
+    .ref("/cibles/" + userNameGenerate(userEmail))
     .once("value")
-    .then(
-      function(snapshot) {
-        var targetPosition = snapshot.exportVal(); 
-        var result = [];
-        console.log(targetPosition)
-        
-        console.log(targetPosition[ProcessingObject(targetPosition).slice(-1)])
-        // 总是显示最新的那组数据
-        var targetPositionDetail = targetPosition[ProcessingObject(targetPosition).slice(-1)];
-        console.log(targetPositionDetail.targetPosition) // String
-        console.log(targetPositionDetail.timeStamp) // 时间戳 int
+    .then(function (snapshot) {
+      var targetPosition = snapshot.exportVal();
+      var result = [];
+      console.log(targetPosition);
+
+      // console.log(targetPosition[ProcessingObject(targetPosition).slice(-1)])
+      // // 总是显示最新的那组数据
+      var targetPositionDetail =
+        targetPosition[ProcessingObject(targetPosition).slice(-1)];
+      var json = eval("(" + targetPositionDetail.targetPosition + ")"); // StringToObject
+      console.log(targetPositionDetail.targetPosition); // String
+      console.log(json); // Object
+      console.log(targetPositionDetail.timeStamp); // 时间戳 int
+
+      var allObject = ProcessingObject(json); //["person", "suitcase", "truck"]
+      // [{nacName: "Poisson", nacPosition: "zone 1A [50,50]", nacAction: "bouger"},
+      // {nacName: "Poisson", nacPosition: "zone 1A [50,50]", nacAction: "bouger"}]
+      var nacDetailData = [];
+      for (var i = 0; i < allObject.length; i++) {
+        for (var j = 0; j < json[allObject[i]].length; j++) {
+          var tempObject = { nacName: "", nacPosition: "", nacAction: "" };
+          tempObject["nacName"] = allObject[i]; //json.allObject(i) = [[764, 365],[764, 365]]
+          tempObject["nacPosition"] = json[allObject[i]][j];
+          tempObject["nacAction"] = json[allObject[i]][j];
+          nacDetailData.push(tempObject);
+        }
       }
-    )
+      console.log(nacDetailData);
+      return nacDetailData;
+    });
+    return adaRef;
 }
 
-// 处理对象 object， 返回一个数组
-function ProcessingObject(object){
+// 处理对象 object，返回一个数组
+function ProcessingObject(object) {
   var result = [];
   for (var i in object) {
     if (object.hasOwnProperty(i)) {
-        result.push(i);
+      result.push(i);
     }
   }
-  return result
+  return result;
 }
 
 // Données de table
@@ -107,36 +132,30 @@ function createTypeData(nacName, nacNumber) {
   return { nacName, nacNumber };
 }
 
-function createDetailData(nacName, nacPosition, nacAction) {
-  return { nacName, nacPosition, nacAction };
-}
-
 const nacTypeData = [
   createTypeData("Poisson", "2"),
   createTypeData("Tortue", "1"),
 ];
 
-const nacDetailData = [
-  createDetailData("Poisson", "zone 1A [50,50]", "bouger"),
-  createDetailData("Poisson", "zone 1A [50,50]", "bouger"),
-  createDetailData("Poisson", "zone 1A [50,50]", "bouger"),
-];
-
 // Données de détection d'état
-
 export default function Espace() {
   const classes = useStyles();
 
   console.log(nacTypeData);
-  console.log(nacDetailData);
 
   // Données de détection d'état
   const userInfo = useSelector((state) => state.userInfo);
+  const [nacDetailDataValue, setNacDetailDataValue] = useState([
+    { nacName: "", nacPosition: "", nacAction: "" },
+  ]);
+  useEffect(() => {
+    readUserData(userInfo.email).then(result =>
+       setNacDetailDataValue([...result]))
+  }, []);
 
   return (
     <React.Fragment>
       <div>
-        {readUserData()}
         {/* 账号信息 */}
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={5} className={classes.paper}>
@@ -159,7 +178,7 @@ export default function Espace() {
               ❎ L'observation à distance n'est pas prête.
             </Typography>
             <Typography variant="body2" align="left">
-              ✅ La connexion à la base de données n'est pas réussie.
+              ❎ La connexion à la base de données n'est pas réussie.
             </Typography>
           </Grid>
         </Grid>
@@ -213,7 +232,7 @@ export default function Espace() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {nacDetailData.map((row) => (
+                {nacDetailDataValue.map((row) => (
                   <StyledTableRow key={row.nacName}>
                     <StyledTableCell component="th" scope="row">
                       {row.nacName}
