@@ -83,18 +83,25 @@ function readUserData(userEmail) {
       // [{nacName: "Poisson", nacPosition: "zone 1A [50,50]", nacAction: "bouger"},
       // {nacName: "Poisson", nacPosition: "zone 1A [50,50]", nacAction: "bouger"}]
       var nacDetailData = [];
+      var nacTypeData = [];
       for (var i = 0; i < allObject.length; i++) {
         for (var j = 0; j < json[allObject[i]].length; j++) {
           var tempObject = { nacName: "", nacPosition: "", nacAction: "" };
-          tempObject["nacName"] = allObject[i]; //json.allObject(i) = [[764, 365],[764, 365]]
+          tempObject["nacName"] = allObject[i]; //json[allObject[i]] = [[764, 365],[764, 365]]
           tempObject["nacPosition"] = json[allObject[i]][j];
           tempObject["nacAction"] = json[allObject[i]][j];
           nacDetailData.push(tempObject);
         }
+        var tempObject = { nacName: "", nacNumber: ""};
+        tempObject["nacName"] = allObject[i];
+        tempObject["nacNumber"] = json[allObject[i]].length; 
+        nacTypeData.push(tempObject);
       }
+
       console.log(nacDetailData);
-      return nacDetailData;
+      return {nacDetailData,nacTypeData};
     });
+    console.log(adaRef);
     return adaRef;
 }
 
@@ -128,29 +135,23 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createTypeData(nacName, nacNumber) {
-  return { nacName, nacNumber };
-}
-
-const nacTypeData = [
-  createTypeData("Poisson", "2"),
-  createTypeData("Tortue", "1"),
-];
-
 // Données de détection d'état
 export default function Espace() {
   const classes = useStyles();
-
-  console.log(nacTypeData);
 
   // Données de détection d'état
   const userInfo = useSelector((state) => state.userInfo);
   const [nacDetailDataValue, setNacDetailDataValue] = useState([
     { nacName: "", nacPosition: "", nacAction: "" },
   ]);
+  const [nacTypeDataValue, setNacTypeDataValue] = useState([
+    { nacName: "", nacNumber: ""},
+  ]);
   useEffect(() => {
-    readUserData(userInfo.email).then(result =>
-       setNacDetailDataValue([...result]))
+    readUserData(userInfo.email).then(result =>{
+      setNacDetailDataValue([...result.nacDetailData]);
+      setNacTypeDataValue([...result.nacTypeData]);
+    })
   }, []);
 
   return (
@@ -204,7 +205,7 @@ export default function Espace() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {nacTypeData.map((row) => (
+                  {nacTypeDataValue.map((row) => (
                     <StyledTableRow key={row.nacName}>
                       <StyledTableCell component="th" scope="row">
                         {row.nacName}
