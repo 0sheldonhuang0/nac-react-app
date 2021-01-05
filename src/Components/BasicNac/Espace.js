@@ -67,9 +67,6 @@ function readUserData(userEmail) {
     .once("value")
     .then(function (snapshot) {
       var targetPosition = snapshot.exportVal();
-      var result = [];
-      console.log(targetPosition);
-
       // console.log(targetPosition[ProcessingObject(targetPosition).slice(-1)])
       // // 总是显示最新的那组数据
       var targetPositionDetail =
@@ -78,6 +75,7 @@ function readUserData(userEmail) {
       console.log(targetPositionDetail.targetPosition); // String
       console.log(json); // Object
       console.log(targetPositionDetail.timeStamp); // 时间戳 int
+      var realTimeString = ProcessingTime(targetPositionDetail.timeStamp);
 
       var allObject = ProcessingObject(json); //["person", "suitcase", "truck"]
       // [{nacName: "Poisson", nacPosition: "zone 1A [50,50]", nacAction: "bouger"},
@@ -92,17 +90,17 @@ function readUserData(userEmail) {
           tempObject["nacAction"] = json[allObject[i]][j];
           nacDetailData.push(tempObject);
         }
-        var tempObject = { nacName: "", nacNumber: ""};
+        var tempObject = { nacName: "", nacNumber: "" };
         tempObject["nacName"] = allObject[i];
-        tempObject["nacNumber"] = json[allObject[i]].length; 
+        tempObject["nacNumber"] = json[allObject[i]].length;
         nacTypeData.push(tempObject);
       }
 
       console.log(nacDetailData);
-      return {nacDetailData,nacTypeData};
+      return { nacDetailData, nacTypeData, realTimeString };
     });
-    console.log(adaRef);
-    return adaRef;
+  console.log(adaRef);
+  return adaRef;
 }
 
 // 处理对象 object，返回一个数组
@@ -114,6 +112,21 @@ function ProcessingObject(object) {
     }
   }
   return result;
+}
+
+function ProcessingTime(time) {
+  var date = new Date(time * 1000);
+  var Y = date.getFullYear() + "-";
+  var M =
+    (date.getMonth() + 1 < 10
+      ? "0" + (date.getMonth() + 1)
+      : date.getMonth() + 1) + "-";
+  var D = date.getDate() + " ";
+  var h = date.getHours() + ":";
+  var m = date.getMinutes() + ":";
+  var s = date.getSeconds();
+  console.log(Y + M + D + h + m + s);
+  return Y + M + D + h + m + s;
 }
 
 // Données de table
@@ -145,13 +158,15 @@ export default function Espace() {
     { nacName: "", nacPosition: "", nacAction: "" },
   ]);
   const [nacTypeDataValue, setNacTypeDataValue] = useState([
-    { nacName: "", nacNumber: ""},
+    { nacName: "", nacNumber: "" },
   ]);
+  const [timeValue, setTimeValue] = useState("");
   useEffect(() => {
-    readUserData(userInfo.email).then(result =>{
+    readUserData(userInfo.email).then((result) => {
       setNacDetailDataValue([...result.nacDetailData]);
       setNacTypeDataValue([...result.nacTypeData]);
-    })
+      setTimeValue([...result.realTimeString]);
+    });
   }, []);
 
   return (
@@ -191,10 +206,13 @@ export default function Espace() {
               alt=""
               className={classes.imageStyle}
             />
+            <Typography variant="caption" className={classes.textStyle}>
+              Dernière capture d'écran dans {timeValue}
+            </Typography>
           </Grid>
           <Grid item xs={12} md={12} lg={4} className={classes.paper}>
             <Typography variant="caption" className={classes.textStyle}>
-              下表中为最近您NAC的数量情况
+              Le numéro de votre NAC dans {timeValue}
             </Typography>
             <TableContainer component={Paper}>
               <Table className={classes.table} aria-label="customized table">
@@ -221,7 +239,7 @@ export default function Espace() {
         <Divider variant="middle" className={classes.divider} />
         <Grid item xs={12} md={12} lg={12} className={classes.paper}>
           <Typography variant="caption" className={classes.textStyle}>
-            下表中为最近您NAC的活动情况
+            Les activités de votre NAC dans {timeValue}
           </Typography>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
@@ -247,6 +265,9 @@ export default function Espace() {
           </TableContainer>
         </Grid>
         <Divider variant="middle" className={classes.divider} />
+        <Typography variant="caption" className={classes.textStyle}>
+          Les activités récentes du votre NAC
+        </Typography>
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12} className={classes.paper}>
             <img
