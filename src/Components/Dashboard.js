@@ -19,26 +19,27 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { mainListItems, secondaryListItems } from "./listItems";
 import Helper from "./Helper";
 import Ppmemo from "./BasicNac/Steps";
+import nacIcon72 from "../images/nac-icon-72.png";
+import logoAM84 from "../images/logo-am-84.png";
 
 function Copyright() {
+  const classes = useStyles();
   return (
     <div>
       <Typography variant="overline" color="textSecondary" align="center">
-        {"Etudiants : HXD LHM | Directeur : Camille JEAN"}
+        {"Etudiants : "}
+        <Link color="inherit" href="https://xd.sh.cn/nac">
+        HUANG Xiaodong
+        </Link>
+        {" & LIU Huimin | Directeur : JEAN Camille"}
       </Typography>
       <Typography variant="body2" color="textSecondary" align="center">
-        <Link color="inherit" href="https://xd.sh.cn/nac">
-          Conception d'une application innovante pour mesurer et influer sur l'activité physique des NAC
+        <Link color="inherit" href="https://nac-app.netlify.app">
+          Conception d'une application innovante pour mesurer et influer sur
+          l'activité physique des NAC
         </Link>
       </Typography>
-      <Typography variant="overline" color="textSecondary" align="center">
-        {"Copyright © "}
-        <Link color="inherit" href="https://xd.sh.cn/nac">
-          不淡定的实验室 xd.sh.cn
-        </Link>
-        {" 2016-"}
-        {new Date().getFullYear()}{" "}
-      </Typography>
+      <img src={logoAM84} alt="AM-logo" className={classes.imageStyle} />
     </div>
   );
 }
@@ -113,6 +114,10 @@ const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+  },
+  imageStyle: {
+    margin: "10px",
+    height: "25px",
   },
   paper: {
     marginBottom: theme.spacing(3),
