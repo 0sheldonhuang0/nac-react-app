@@ -71,7 +71,7 @@ function ProductHowItWorks(props) {
           className={classes.title}
           component="h2"
         >
-          How it works
+          Comment ça fonctionne
         </Typography>
         <div>
           <Grid container spacing={5}>
@@ -79,21 +79,21 @@ function ProductHowItWorks(props) {
               <img src={EspaceSamplePicture} alt="" className={classes.image} />
               <div className={classes.item}>
               <img src={IndexIcon1} className={classes.imageIcon} />
-                <div className={classes.number}>远程查看</div>
+                <div className={classes.number}>Voir à distance</div>
               </div>
             </Grid>
             <Grid item xs={12} md={4}>
               <img src={EspaceSamplePicture} className={classes.image} />
               <div className={classes.item}>
                 <img src={IndexIcon2} className={classes.imageIcon} />
-                <div className={classes.number}>全平台覆盖</div>
+                <div className={classes.number}>Couvrir tous les plateformes</div>
               </div>
             </Grid>
             <Grid item xs={12} md={4}>
               <img src={EspaceSamplePicture} className={classes.image} />
               <div className={classes.item}>
               <img src={IndexIcon3} className={classes.imageIcon} />
-                <div className={classes.number}>支持自定义</div>
+                <div className={classes.number}>Personnaliser</div>
               </div>
             </Grid>
           </Grid>
@@ -104,9 +104,9 @@ function ProductHowItWorks(props) {
           variant="contained"
           className={classes.button}
           component="a"
-          href="/d"
+          href="/espace"
         >
-          Get started
+          Commencez !
         </Button>
       </Container>
     </section>
