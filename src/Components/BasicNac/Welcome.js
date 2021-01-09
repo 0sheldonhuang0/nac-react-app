@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
@@ -21,6 +22,9 @@ import { mainListItems, secondaryListItems } from "../listItems";
 //import Steps from "/BasicNac/Steps";
 //import Welcome from "/BasicNac/Welcome";
 import logoAM84 from "../../images/logo-am-84.png";
+
+import ProductHero from "../IndexPage/ProductHero";
+import ProductHowItWorks from "../IndexPage/ProductHowItWorks";
 
 function Copyright() {
   const classes = useStyles();
@@ -194,28 +198,11 @@ export default function Dashboard() {
 
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.printHelperArea}>
-          <nav>
-            <ul>
-              <li>
-                <link to="/" />
-                Home
-              </li>
-              <li>
-                <link to="/about" />
-                About
-              </li>
-              <li>
-                <link to="/d" />
-                Dashboard
-              </li>
-              <li>
-                <link to="/users" />
-                Users
-              </li>
-            </ul>
-          </nav>
-        </Container>
+        <ProductHero />
+        <ProductHowItWorks />
+        <Box pt={4}>
+        <Copyright />
+        </Box>
       </main>
     </div>
   );
