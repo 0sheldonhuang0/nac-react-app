@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { useSelector } from "react-redux";
-import AuthSuccess from "./AuthSuccess";
-import AuthInput from "./AuthInput";
+const AuthInput = React.lazy(() => import("./AuthInput"));
+const AuthSuccess = React.lazy(() => import("./AuthSuccess"));
 
 // Initiale
 const useStyles = makeStyles(() => ({
@@ -40,11 +42,19 @@ export default function Setup() {
 
   return (
     <div className={classes.root}>
-      {userInfo.uid === undefined ? (
-        <AuthInput></AuthInput>
-      ) : (
-        <AuthSuccess></AuthSuccess>
-      )}
+      <React.Suspense
+        fallback={
+          <div>
+            <CircularProgress />
+          </div>
+        }
+      >
+        {userInfo.name === undefined ? (
+          <AuthInput></AuthInput>
+        ) : (
+          <AuthSuccess></AuthSuccess>
+        )}
+      </React.Suspense>
     </div>
   );
 }

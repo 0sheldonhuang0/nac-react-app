@@ -18,7 +18,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { mainListItems, secondaryListItems } from "./listItems";
 import Helper from "./Helper";
-import Ppmemo from "./BasicNac/Steps";
+import Steps from "./BasicNac/Steps";
+import Welcome from "./BasicNac/Welcome";
 import nacIcon72 from "../images/nac-icon-72.png";
 import logoAM84 from "../images/logo-am-84.png";
 
@@ -199,7 +200,7 @@ export default function Dashboard() {
             {/* 制作你的卡片集 */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={classes.paper}>
-                <Ppmemo />
+              <Steps />
               </Paper>
             </Grid>
             {/* 侧栏：这是什么？ */}

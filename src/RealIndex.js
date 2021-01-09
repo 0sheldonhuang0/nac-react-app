@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import Dashboard from "./Components/Dashboard";
-
+import Welcome from "./Components/BasicNac/Welcome";
 
 function Home() {
     return <h2>Home</h2>;
@@ -24,23 +24,6 @@ export default function RealIndex() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/d">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
@@ -54,7 +37,7 @@ export default function RealIndex() {
             <Dashboard />
           </Route>
           <Route path="/">
-            <Home />
+            <Welcome />
           </Route>
         </Switch>
       </div>
