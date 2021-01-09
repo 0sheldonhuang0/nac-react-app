@@ -4,9 +4,16 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
+import AssignmentIcon from "@material-ui/icons/Assignment";
 
 export const mainListItems = (
   <div>
+    <ListItem button component="a" href="https://nac-app.netlify.app">
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Mon espace" />
+    </ListItem>
     <ListItem button component="a" href="https://nac-app.netlify.app">
       <ListItemIcon>
         <LayersIcon />
@@ -17,7 +24,10 @@ export const mainListItems = (
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="La description"  secondary="Comment ça fonctionne" />
+      <ListItemText
+        primary="La description"
+        secondary="Comment ça fonctionne"
+      />
     </ListItem>
   </div>
 );
