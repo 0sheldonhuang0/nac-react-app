@@ -20,7 +20,7 @@ function Home() {
     return <h2>Users</h2>;
   }
 
-export default function RealIndex() {
+export default function MainRouter() {
   return (
     <Router>
       <div>
@@ -33,7 +33,7 @@ export default function RealIndex() {
           <Route path="/users">
             <Users />
           </Route>
-          <Route path="/d">
+          <Route path="/espace">
             <Dashboard />
           </Route>
           <Route path="/">
