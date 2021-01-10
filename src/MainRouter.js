@@ -1,24 +1,20 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Dashboard from "./Components/Dashboard";
 import Welcome from "./Components/BasicNac/Welcome";
+import Document from "./Components/Document";
 
 function Home() {
-    return <h2>Home</h2>;
-  }
-  
-  function About() {
-    return <h2>About</h2>;
-  }
-  
-  function Users() {
-    return <h2>Users</h2>;
-  }
+  return <h2>Home</h2>;
+}
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
 
 export default function MainRouter() {
   return (
@@ -28,10 +24,10 @@ export default function MainRouter() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/about">
-            <About />
+            <Document>MdAbout</Document>
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/user-guide">
+            <Document>MdUserGuide</Document>
           </Route>
           <Route path="/espace">
             <Dashboard />

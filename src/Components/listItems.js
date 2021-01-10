@@ -8,19 +8,19 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 
 export const mainListItems = (
   <div>
-    <ListItem button component="a" href="https://nac-app.netlify.app">
+    <ListItem button component="a" href="/espace">
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
       <ListItemText primary="Mon espace" />
     </ListItem>
-    <ListItem button component="a" href="https://nac-app.netlify.app">
+    <ListItem button component="a" href="/user-guide">
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>
       <ListItemText primary="Mode d'emploi" />
     </ListItem>
-    <ListItem button component="a" href="https://nac-app.netlify.app">
+    <ListItem button component="a" href="/user-guide">
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>

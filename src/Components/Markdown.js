@@ -2,6 +2,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { makeStyles } from "@material-ui/core/styles";
 import MdAbout from "../Docs/about.md";
+import MdUserGuide from "../Docs/user_guide.md";
 
 const useStyles = makeStyles(() => ({
   textStyle: {
@@ -27,15 +28,18 @@ export default function Markdown(fileName) {
   };
   // 根据fileName读取文件
   const chooseFile = (fileName) => {
-      switch(fileName){
-          case "MdAbout":
-            fileOpen(MdAbout);
-            break;
-        default:
-            fileOpen(MdAbout);
-            break;
-      }
-  }
+    switch (fileName.children) {
+      case "MdAbout":
+        fileOpen(MdAbout);
+        break;
+      case "MdUserGuide":
+        fileOpen(MdUserGuide);
+        break;
+      default:
+        fileOpen(MdAbout);
+        break;
+    }
+  };
 
   return (
     <React.Fragment>
