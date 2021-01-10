@@ -127,9 +127,11 @@ function readUserImg(userEmail) {
 // }
 
 // 处理链接
-function ProcessingUrl(userEmail,urlName, i) {
+function ProcessingUrl(userEmail, urlName, i) {
   var url =
-    "https://firebasestorage.googleapis.com/v0/b/fir-rtc-aff50.appspot.com/o/"+ userNameGenerate(userEmail) + "%2F" +
+    "https://firebasestorage.googleapis.com/v0/b/fir-rtc-aff50.appspot.com/o/" +
+    userNameGenerate(userEmail) +
+    "%2F" +
     urlName[i] +
     "?alt=media";
   return url;
@@ -221,7 +223,7 @@ export default function Espace() {
     <React.Fragment>
       <div>
         {/* 账号信息 */}
-        {console.log(ProcessingUrl(userInfo.email,urlName,0))}
+        {console.log(ProcessingUrl(userInfo.email, urlName, 0))}
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={5} className={classes.paper}>
             <Button
@@ -231,7 +233,22 @@ export default function Espace() {
             >
               Bilan du jour
             </Button>
-            <Button variant="contained" className={classes.buttonArea}>
+            <Button
+              variant="contained"
+              onClick={()=>{
+                readUserData(userInfo.email).then((result) => {
+                  setNacDetailDataValue([...result.nacDetailData]);
+                  setNacTypeDataValue([...result.nacTypeData]);
+                  setTimeValue([...result.realTimeString]);
+                });
+            
+                readUserImg(userInfo.email).then((result) => {
+                  setUrlName([...result.imgNameList]);
+                  console.log(result.imgNameList);
+                });
+              }}
+              className={classes.buttonArea}
+            >
               Mettre à jour
             </Button>
           </Grid>
@@ -251,7 +268,7 @@ export default function Espace() {
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={7} className={classes.paper}>
             <img
-              src={ProcessingUrl(userInfo.email,urlName,0)}
+              src={ProcessingUrl(userInfo.email, urlName, 0)}
               alt=""
               className={classes.imageStyle}
             />
@@ -305,8 +322,12 @@ export default function Espace() {
                     <StyledTableCell component="th" scope="row">
                       {row.nacName}
                     </StyledTableCell>
-                    <StyledTableCell>({row.nacPosition[0]},{row.nacPosition[1]})</StyledTableCell>
-                    <StyledTableCell>({row.nacAction[0]},{row.nacAction[1]})</StyledTableCell>
+                    <StyledTableCell>
+                      ({row.nacPosition[0]},{row.nacPosition[1]})
+                    </StyledTableCell>
+                    <StyledTableCell>
+                      ({row.nacAction[0]},{row.nacAction[1]})
+                    </StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>
@@ -320,14 +341,14 @@ export default function Espace() {
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12} className={classes.paper}>
             <img
-              src={ProcessingUrl(userInfo.email,urlName,1)}
+              src={ProcessingUrl(userInfo.email, urlName, 1)}
               alt="示例图片：识别 NAC"
               className={classes.imageStyle}
             />
           </Grid>
           <Grid item xs={12} md={12} lg={12} className={classes.paper}>
             <img
-              src={ProcessingUrl(userInfo.email,urlName,2)}
+              src={ProcessingUrl(userInfo.email, urlName, 2)}
               alt="示例图片：识别 NAC"
               className={classes.imageStyle}
             />
@@ -336,14 +357,14 @@ export default function Espace() {
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12} className={classes.paper}>
             <img
-              src={ProcessingUrl(userInfo.email,urlName,3)}
+              src={ProcessingUrl(userInfo.email, urlName, 3)}
               alt="示例图片：识别 NAC"
               className={classes.imageStyle}
             />
           </Grid>
           <Grid item xs={12} md={12} lg={12} className={classes.paper}>
             <img
-              src={ProcessingUrl(userInfo.email,urlName,4)}
+              src={ProcessingUrl(userInfo.email, urlName, 4)}
               alt="示例图片：识别 NAC"
               className={classes.imageStyle}
             />
