@@ -19,6 +19,7 @@ import EspaceSamplePicture from "../../images/espace_sample_picture.jpg";
 import firebase from "firebase/app";
 require("firebase/auth");
 require("firebase/database");
+require("firebase/storage");
 
 const useStyles = makeStyles(() => ({
   buttonArea: {
@@ -50,13 +51,6 @@ const useStyles = makeStyles(() => ({
     minWidth: 200,
   },
 }));
-
-function userNameGenerate(userEmail) {
-  console.log(userEmail);
-  userEmail = userEmail.replace(/\./g, "_").replace(/@/g, "__");
-  console.log(userEmail);
-  return userEmail;
-}
 
 function readUserData(userEmail) {
   // Récupérer les données de la Firebase
@@ -103,6 +97,44 @@ function readUserData(userEmail) {
   return adaRef;
 }
 
+function readUserImg(userEmail) {
+  // Create a storage reference from our storage service
+  var storageRef = firebase
+    .storage()
+    .ref("/" + userNameGenerate(userEmail) + "/")
+    .list({ maxResults: 5 })
+    .then(function (res) {
+      var imgItems = res.items;
+      var imgNameList = [];
+      for (var i = 0; i < imgItems.length; i++) {
+        imgNameList.push(imgItems[i].name);
+      }
+      imgNameList.reverse();
+      return { imgNameList };
+    });
+  return storageRef;
+}
+
+// function readImgUrl(userEmail, imageName, i) {
+//   var imageUrl = firebase
+//     .storage()
+//     .ref(userNameGenerate(userEmail) + "/" + imageName[i]) //不用加jpg！！！
+//     .getDownloadURL()
+//     .then(function (res) {
+//       return { res };
+//     });
+//   return imageUrl;
+// }
+
+// 处理链接
+function ProcessingUrl(userEmail,urlName, i) {
+  var url =
+    "https://firebasestorage.googleapis.com/v0/b/fir-rtc-aff50.appspot.com/o/"+ userNameGenerate(userEmail) + "%2F" +
+    urlName[i] +
+    "?alt=media";
+  return url;
+}
+
 // 处理对象 object，返回一个数组
 function ProcessingObject(object) {
   var result = [];
@@ -114,6 +146,7 @@ function ProcessingObject(object) {
   return result;
 }
 
+// 处理时间戳
 function ProcessingTime(time) {
   var date = new Date(time * 1000);
   var Y = date.getFullYear() + "-";
@@ -127,6 +160,14 @@ function ProcessingTime(time) {
   var s = date.getSeconds();
   console.log(Y + M + D + h + m + s);
   return Y + M + D + h + m + s;
+}
+
+// 重建用户名
+function userNameGenerate(userEmail) {
+  console.log(userEmail);
+  userEmail = userEmail.replace(/\./g, "_").replace(/@/g, "__");
+  console.log(userEmail);
+  return userEmail;
 }
 
 // Données de table
@@ -161,11 +202,18 @@ export default function Espace() {
     { nacName: "", nacNumber: "" },
   ]);
   const [timeValue, setTimeValue] = useState("");
+  const [urlName, setUrlName] = useState([[]]);
+
   useEffect(() => {
     readUserData(userInfo.email).then((result) => {
       setNacDetailDataValue([...result.nacDetailData]);
       setNacTypeDataValue([...result.nacTypeData]);
       setTimeValue([...result.realTimeString]);
+    });
+
+    readUserImg(userInfo.email).then((result) => {
+      setUrlName([...result.imgNameList]);
+      console.log(result.imgNameList);
     });
   }, []);
 
@@ -173,6 +221,7 @@ export default function Espace() {
     <React.Fragment>
       <div>
         {/* 账号信息 */}
+        {console.log(ProcessingUrl(userInfo.email,urlName,0))}
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={5} className={classes.paper}>
             <Button
@@ -202,7 +251,7 @@ export default function Espace() {
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={7} className={classes.paper}>
             <img
-              src={EspaceSamplePicture}
+              src={ProcessingUrl(userInfo.email,urlName,0)}
               alt=""
               className={classes.imageStyle}
             />
@@ -256,8 +305,8 @@ export default function Espace() {
                     <StyledTableCell component="th" scope="row">
                       {row.nacName}
                     </StyledTableCell>
-                    <StyledTableCell>{row.nacPosition}</StyledTableCell>
-                    <StyledTableCell>{row.nacAction}</StyledTableCell>
+                    <StyledTableCell>({row.nacPosition[0]},{row.nacPosition[1]})</StyledTableCell>
+                    <StyledTableCell>({row.nacAction[0]},{row.nacAction[1]})</StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>
@@ -271,14 +320,14 @@ export default function Espace() {
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12} className={classes.paper}>
             <img
-              src={EspaceSamplePicture}
+              src={ProcessingUrl(userInfo.email,urlName,1)}
               alt="示例图片：识别 NAC"
               className={classes.imageStyle}
             />
           </Grid>
           <Grid item xs={12} md={12} lg={12} className={classes.paper}>
             <img
-              src={EspaceSamplePicture}
+              src={ProcessingUrl(userInfo.email,urlName,2)}
               alt="示例图片：识别 NAC"
               className={classes.imageStyle}
             />
@@ -287,14 +336,14 @@ export default function Espace() {
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12} className={classes.paper}>
             <img
-              src={EspaceSamplePicture}
+              src={ProcessingUrl(userInfo.email,urlName,3)}
               alt="示例图片：识别 NAC"
               className={classes.imageStyle}
             />
           </Grid>
           <Grid item xs={12} md={12} lg={12} className={classes.paper}>
             <img
-              src={EspaceSamplePicture}
+              src={ProcessingUrl(userInfo.email,urlName,4)}
               alt="示例图片：识别 NAC"
               className={classes.imageStyle}
             />
