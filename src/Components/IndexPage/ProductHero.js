@@ -34,7 +34,7 @@ function ProductHero(props) {
       {/* Increase the network loading priority of the background image. */}
       <img style={{ display: 'none' }} src={IndexImg01} alt="increase priority" />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        Toujours avec votre bébé
+        Toujours avec votre NAC
       </Typography>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
         une application innovante pour mesurer et influer sur l'activité physique des NAC
@@ -50,7 +50,7 @@ function ProductHero(props) {
         Commencez !
       </Button>
       <Typography variant="body2" color="inherit" className={classes.more}>
-      Essayez maintenant
+      Cliquez sur le bouton ci-dessus et essayez maintenant !
       </Typography>
     </ProductHeroLayout>
   );

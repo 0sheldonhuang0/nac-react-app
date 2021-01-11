@@ -2,7 +2,11 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { makeStyles } from "@material-ui/core/styles";
 import MdAbout from "../Docs/about.md";
-import MdUserGuide from "../Docs/user_guide.md";
+import MdAboutYolo from "../Docs/about-yolo.md";
+import MdAboutIndex from "../Docs/about-index.md";
+import MdUserGuide from "../Docs/user-guide.md";
+import MdNacPython from "../Docs/nac-python-gui.md";
+import MdNacReact from "../Docs/nac-react-app.md";
 
 const useStyles = makeStyles(() => ({
   textStyle: {
@@ -32,8 +36,20 @@ export default function Markdown(fileName) {
       case "MdAbout":
         fileOpen(MdAbout);
         break;
+      case "MdAboutIndex":
+        fileOpen(MdAboutIndex);
+        break;
+      case "MdAboutYolo":
+        fileOpen(MdAboutYolo);
+        break;
       case "MdUserGuide":
         fileOpen(MdUserGuide);
+        break;
+      case "MdNacPython":
+        fileOpen(MdNacPython);
+        break;
+      case "MdNacReact":
+        fileOpen(MdNacReact);
         break;
       default:
         fileOpen(MdAbout);

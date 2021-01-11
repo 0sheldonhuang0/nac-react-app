@@ -7,9 +7,10 @@ import Markdown from "./Markdown";
 const useStyles = makeStyles(() => ({
   textStyle: {
     margin: "5px",
-    textIndent: "5px",
+    textIndent: "30px",
     lineHeight: "30px",
-    textAlign: "left",
+    textAlign: "justify",
+  	textJustify: "inter-ideograph"
   },
   titleStyle: {
     margin: "10px",
@@ -22,7 +23,7 @@ export default function Helper() {
     <React.Fragment>
       <Title>Qu'est-ce que c'est?</Title>
       <div className={classes.textStyle}>
-        <Markdown>MdAbout</Markdown>
+        <Markdown>MdAboutIndex</Markdown>
       </div>
     </React.Fragment>
   );

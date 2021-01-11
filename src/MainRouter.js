@@ -26,8 +26,17 @@ export default function MainRouter() {
           <Route path="/about">
             <Document>MdAbout</Document>
           </Route>
+          <Route path="/about-yolo">
+            <Document>MdAboutYolo</Document>
+          </Route>
           <Route path="/user-guide">
             <Document>MdUserGuide</Document>
+          </Route>
+          <Route path="/nac-python-gui">
+            <Document>MdNacPython</Document>
+          </Route>
+          <Route path="/nac-react-app">
+            <Document>MdNacReact</Document>
           </Route>
           <Route path="/espace">
             <Dashboard />
