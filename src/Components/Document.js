@@ -16,7 +16,7 @@ import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import { mainListItems, secondaryListItems } from "./listItems";
+import MainListItems, {secondaryListItems } from "./listItems";
 import Helper from "./Helper";
 import Steps from "./BasicNac/Steps";
 import Welcome from "./BasicNac/Welcome";
@@ -189,7 +189,7 @@ export default function Document(fileName) {
           </IconButton>
         </div>
         <Divider />
-        <List>{mainListItems}</List>
+        <List><MainListItems/></List>
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
