@@ -6,6 +6,7 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { useSelector,useDispatch } from "react-redux";
+import Markdown from "../Markdown";
 
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import firebase from "firebase/app";
@@ -71,6 +72,11 @@ export default function AuthSuccess() {
                  {storeSuccessedData(true)}
       <Container maxWidth="lg" className={classes.container}>
         <Grid container spacing={1}>
+          <Grid item xs={12} md={12} lg={12} className={classes.paper}>
+            <div className={classes.textStyle}>
+              <Markdown>MdHelp2</Markdown>
+            </div>
+          </Grid>
           <Grid item xs={12} md={12} lg={12} className={classes.paper}>
             <Typography>Connexion réussie</Typography>
             <Button

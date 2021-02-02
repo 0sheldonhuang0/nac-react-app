@@ -7,7 +7,9 @@ import MdAboutIndex from "../Docs/about-index.md";
 import MdUserGuide from "../Docs/user-guide.md";
 import MdNacPython from "../Docs/nac-python-gui.md";
 import MdNacReact from "../Docs/nac-react-app.md";
-import CodeBlock from '../Components/CodeBlock';
+import MdHelp1 from "../Docs/help-1.md";
+import MdHelp2 from "../Docs/help-2.md";
+import CodeBlock from "../Components/CodeBlock";
 
 const useStyles = makeStyles(() => ({
   textStyle: {
@@ -37,6 +39,12 @@ export default function Markdown(fileName) {
       case "MdAbout":
         fileOpen(MdAbout);
         break;
+      case "MdHelp1":
+        fileOpen(MdHelp1);
+        break;
+      case "MdHelp2":
+        fileOpen(MdHelp2);
+        break;
       case "MdAboutIndex":
         fileOpen(MdAboutIndex);
         break;
@@ -62,7 +70,7 @@ export default function Markdown(fileName) {
     <React.Fragment>
       {chooseFile(fileName)}
       <div className={classes.textStyle}>
-        <ReactMarkdown source={text} renderers={{ code: CodeBlock }}/>
+        <ReactMarkdown source={text} renderers={{ code: CodeBlock }} />
       </div>
     </React.Fragment>
   );
