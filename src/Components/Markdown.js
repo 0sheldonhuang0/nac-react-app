@@ -7,6 +7,7 @@ import MdAboutIndex from "../Docs/about-index.md";
 import MdUserGuide from "../Docs/user-guide.md";
 import MdNacPython from "../Docs/nac-python-gui.md";
 import MdNacReact from "../Docs/nac-react-app.md";
+import CodeBlock from '../Components/CodeBlock';
 
 const useStyles = makeStyles(() => ({
   textStyle: {
@@ -61,7 +62,7 @@ export default function Markdown(fileName) {
     <React.Fragment>
       {chooseFile(fileName)}
       <div className={classes.textStyle}>
-        <ReactMarkdown source={text} />
+        <ReactMarkdown source={text} renderers={{ code: CodeBlock }}/>
       </div>
     </React.Fragment>
   );
