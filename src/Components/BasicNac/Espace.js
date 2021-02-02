@@ -97,19 +97,36 @@ function readUserData(userEmail) {
   return adaRef;
 }
 
+function delectUserImg(userEmail,imgItems) {
+  var delectNumber = imgItems.length - 1500;
+  console.log(imgItems);
+  for(var i = 0;i<delectNumber;i++){
+    var desertRef = firebase
+      .storage()
+      .ref("/" + userNameGenerate(userEmail) + "/" + imgItems[i].name)
+      .delete()
+      .then(function () {})
+      .catch(function (error) {});
+  }
+}
+
 function readUserImg(userEmail) {
   // Create a storage reference from our storage service
   var storageRef = firebase
     .storage()
     .ref("/" + userNameGenerate(userEmail) + "/")
-    .list({ maxResults: 5 })
+    .listAll()
     .then(function (res) {
       var imgItems = res.items;
+      console.log(imgItems);
+      if (imgItems.length >= 1500) {
+        delectUserImg(userEmail,imgItems);
+      }
+      imgItems.reverse();
       var imgNameList = [];
-      for (var i = 0; i < imgItems.length; i++) {
+      for (var i = 0; i < 5; i++) {
         imgNameList.push(imgItems[i].name);
       }
-      imgNameList.reverse();
       return { imgNameList };
     });
   return storageRef;
@@ -166,9 +183,7 @@ function ProcessingTime(time) {
 
 // 重建用户名
 function userNameGenerate(userEmail) {
-  console.log(userEmail);
   userEmail = userEmail.replace(/\./g, "_").replace(/@/g, "__");
-  console.log(userEmail);
   return userEmail;
 }
 
@@ -235,13 +250,13 @@ export default function Espace() {
             </Button>
             <Button
               variant="contained"
-              onClick={()=>{
+              onClick={() => {
                 readUserData(userInfo.email).then((result) => {
                   setNacDetailDataValue([...result.nacDetailData]);
                   setNacTypeDataValue([...result.nacTypeData]);
                   setTimeValue([...result.realTimeString]);
                 });
-            
+
                 readUserImg(userInfo.email).then((result) => {
                   setUrlName([...result.imgNameList]);
                   console.log(result.imgNameList);
