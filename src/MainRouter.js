@@ -26,8 +26,8 @@ export default function MainRouter() {
           <Route path="/about">
             <Document>MdAbout</Document>
           </Route>
-          <Route path="/about-yolo">
-            <Document>MdAboutYolo</Document>
+          <Route path="/train-data">
+            <Document>MdTrainData</Document>
           </Route>
           <Route path="/user-guide">
             <Document>MdUserGuide</Document>

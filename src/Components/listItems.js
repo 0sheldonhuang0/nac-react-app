@@ -11,6 +11,12 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
+import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
+import PetsIcon from '@material-ui/icons/Pets';
+import HomeIcon from '@material-ui/icons/Home';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 
 const useStyles = makeStyles((theme) => ({
   nested: {
@@ -29,25 +35,25 @@ export default function MainListItems() {
   <div>
         <ListItem button component="a" href="/">
       <ListItemIcon>
-        <AssignmentIcon />
+        <HomeIcon />
       </ListItemIcon>
       <ListItemText primary="Accueil" />
     </ListItem>
     <ListItem button component="a" href="/espace">
       <ListItemIcon>
-        <AssignmentIcon />
+        <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Mon espace" />
     </ListItem>
     <ListItem button component="a" href="/user-guide">
       <ListItemIcon>
-        <LayersIcon />
+        <AssignmentIcon />
       </ListItemIcon>
       <ListItemText primary="Mode d'emploi" />
     </ListItem>
     <ListItem button  onClick={handleClick}>
       <ListItemIcon>
-        <BarChartIcon />
+        <LibraryBooksIcon />
       </ListItemIcon>
       <ListItemText
         primary="Les documents"
@@ -57,29 +63,23 @@ export default function MainListItems() {
     </ListItem>
     <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItem button component="a" href="/user-guide"  className={classes.nested}>
+          <ListItem button component="a" href="/nac-python-gui"  className={classes.nested}>
             <ListItemIcon>
-              <StarBorder />
+              <DesktopWindowsIcon />
             </ListItemIcon>
-            <ListItemText primary="Starred" />
+            <ListItemText primary="NAC Desktop App"/>
           </ListItem>
-          <ListItem button component="a" href="/user-guide" className={classes.nested}>
+          <ListItem button component="a" href="/nac-react-app" className={classes.nested}>
             <ListItemIcon>
-              <StarBorder />
+              <PhoneIphoneIcon />
             </ListItemIcon>
-            <ListItemText primary="Starred" />
+            <ListItemText primary="NAC Web App" />
           </ListItem>
-          <ListItem button component="a" href="/user-guide" className={classes.nested}>
+          <ListItem button component="a" href="/train-data" className={classes.nested}>
             <ListItemIcon>
-              <StarBorder />
+              <PetsIcon />
             </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
-          <ListItem button component="a" href="/user-guide" className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
+            <ListItemText primary="Personnalisation" />
           </ListItem>
         </List>
       </Collapse>

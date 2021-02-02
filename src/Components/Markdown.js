@@ -2,7 +2,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { makeStyles } from "@material-ui/core/styles";
 import MdAbout from "../Docs/about.md";
-import MdAboutYolo from "../Docs/about-yolo.md";
+import MdTrainData from "../Docs/train-data.md";
 import MdAboutIndex from "../Docs/about-index.md";
 import MdUserGuide from "../Docs/user-guide.md";
 import MdNacPython from "../Docs/nac-python-gui.md";
@@ -40,8 +40,8 @@ export default function Markdown(fileName) {
       case "MdAboutIndex":
         fileOpen(MdAboutIndex);
         break;
-      case "MdAboutYolo":
-        fileOpen(MdAboutYolo);
+      case "MdTrainData":
+        fileOpen(MdTrainData);
         break;
       case "MdUserGuide":
         fileOpen(MdUserGuide);
