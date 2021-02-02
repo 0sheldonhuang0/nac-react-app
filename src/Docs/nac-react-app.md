@@ -26,7 +26,7 @@ Si l'utilisateur n'a pas de compte, il peut saisir son adresse e-mail et son mot
 
 ### L’utilisation du « NAC React APP » （Pour développeur）
 
- « NAC React APP » utilise l'hébergement en ligne de Netlify, le site Web est : [Toujours avec votre NAC](https://ensameu-my.sharepoint.com/personal/xiaodong_huang_ensam_eu/Documents/ENSAM文件/3A/NAC Rapport/nac-app.netlify.app) (nac-app.netlify.app). L'utilisateur peut se connecter directement à l'URL ci-dessus, terminer l'inscription, le téléchargement l’APP bureau et ensuite l'utiliser. En tant que développeur, le code source de ce projet est hébergé sur Github. Les développeurs peuvent accéder à [0sheldonhuang0/nac-react-app (github.com)](https://github.com/0sheldonhuang0/nac-react-app) pour les cloner ou télécharger.
+ « NAC React APP » utilise l'hébergement en ligne de Netlify, le site Web est : [Toujours avec votre NAC](nac-app.netlify.app). L'utilisateur peut se connecter directement à l'URL ci-dessus, terminer l'inscription, le téléchargement l’APP bureau et ensuite l'utiliser. En tant que développeur, le code source de ce projet est hébergé sur Github. Les développeurs peuvent accéder à [0sheldonhuang0/nac-react-app (github.com)](https://github.com/0sheldonhuang0/nac-react-app) pour les cloner ou télécharger.
 
 Cette partie se concentre principalement sur les développeurs pour utiliser ces codes. (Avant de l’utiliser, le developpeur doit avoir de base de JavaScript)
 
