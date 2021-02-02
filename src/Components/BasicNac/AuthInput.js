@@ -78,14 +78,14 @@ export default function AuthInput() {
       .then((user) => {
         // Signed in
         console.log(user);
-        alert("大概登录成功了！");
+        alert("Vous vous êtes connecté avec succès !");
         storeSuccessedData(true);
       })
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorCode);
-        alert("遇到了一些错误！");
+        alert("Vous avez rencontré des erreurs! Il se peut que le nom d'utilisateur / mot de passe soit incorrect ou que vous n'ayez pas enregistré de compte.");
       });
   }
 

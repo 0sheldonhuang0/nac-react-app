@@ -56,7 +56,7 @@ export default function AuthSuccess() {
       .auth()
       .signOut()
       .then(() => {
-        alert("大概注销了！");
+        alert("Vous êtes déconnecté.");
         console.log(userInfo);
       })
       .catch((error) => {
@@ -72,7 +72,7 @@ export default function AuthSuccess() {
       <Container maxWidth="lg" className={classes.container}>
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12} className={classes.paper}>
-            <Typography>已登陆成功</Typography>
+            <Typography>Connexion réussie</Typography>
             <Button
               color="primary"
               onClick={() => {
