@@ -37,6 +37,13 @@ const useStyles = makeStyles(() => ({
     maxWidth: "100%",
     height: "auto",
   },
+  textStyle: {
+    margin: "5px",
+    textIndent: "30px",
+    lineHeight: "30px",
+    textAlign: "justify",
+  	textJustify: "inter-ideograph"
+  },
 }));
 
 export default function AuthSuccess() {
