@@ -20,30 +20,26 @@ import MainListItems, { secondaryListItems } from "../listItems";
 import ProductHero from "../IndexPage/ProductHero";
 import ProductHowItWorks from "../IndexPage/ProductHowItWorks";
 
+import logoAM84 from "../../images/logo-am-84.png";
+
 function Copyright() {
   const classes = useStyles();
   return (
     <div>
       <Typography variant="overline" color="textSecondary" align="center">
-        {" by "}
-        <Link color="inherit" href="https://xd.sh.cn">
-          xd.sh.cn 不淡定的实验室
+        {"Etudiants : "}
+        <Link color="inherit" href="https://xd.sh.cn/">
+          HUANG Xiaodong
         </Link>
+        {" & LIU Huimin | Directeur : JEAN Camille"}
       </Typography>
       <Typography variant="body2" color="textSecondary" align="center">
-        <Link color="inherit" href="https://xd.sh.cn/nac">
+        <Link color="inherit" href="https://nac-app.netlify.app">
           Conception d'une application innovante pour mesurer et influer sur
           l'activité physique des NAC
         </Link>
       </Typography>
-      <Typography variant="overline" color="textSecondary" align="center">
-        {"Copyright © "}
-        <Link color="inherit" href="https://xd.sh.cn/">
-          不淡定的实验室 xd.sh.cn
-        </Link>
-        {" 2016-"}
-        {new Date().getFullYear()}{" "}
-      </Typography>
+      <img src={logoAM84} alt="AM-logo" className={classes.imageStyle} />
     </div>
   );
 }

@@ -63,12 +63,6 @@ function ProductHero(props) {
       <Typography variant="body2" color="inherit" className={classes.more}>
         Cliquez sur le bouton ci-dessus et essayez maintenant !
       </Typography>
-      <Typography variant="body2" color="inherit" className={classes.more}>
-        👉 中文版说明：
-        <Link color="inherit" href="https://xd.sh.cn/pje-nac/">
-          使用 YOLOv4 检测目标并远程查看数据
-        </Link>
-      </Typography>
     </ProductHeroLayout>
   );
 }
