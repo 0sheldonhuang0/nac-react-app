@@ -19,28 +19,31 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import MainListItems,{ secondaryListItems } from "./listItems";
 import Helper from "./Helper";
 import Steps from "./BasicNac/Steps";
-import Welcome from "./BasicNac/Welcome";
-import nacIcon72 from "../images/nac-icon-72.png";
-import logoAM84 from "../images/logo-am-84.png";
 
 function Copyright() {
   const classes = useStyles();
   return (
     <div>
       <Typography variant="overline" color="textSecondary" align="center">
-        {"Etudiants : "}
-        <Link color="inherit" href="https://xd.sh.cn/nac">
-        HUANG Xiaodong
+        {" by "}
+        <Link color="inherit" href="https://xd.sh.cn">
+          xd.sh.cn 不淡定的实验室
         </Link>
-        {" & LIU Huimin | Directeur : JEAN Camille"}
       </Typography>
       <Typography variant="body2" color="textSecondary" align="center">
-        <Link color="inherit" href="https://nac-app.netlify.app">
+        <Link color="inherit" href="https://xd.sh.cn/nac">
           Conception d'une application innovante pour mesurer et influer sur
           l'activité physique des NAC
         </Link>
       </Typography>
-      <img src={logoAM84} alt="AM-logo" className={classes.imageStyle} />
+      <Typography variant="overline" color="textSecondary" align="center">
+        {"Copyright © "}
+        <Link color="inherit" href="https://xd.sh.cn/">
+          不淡定的实验室 xd.sh.cn
+        </Link>
+        {" 2016-"}
+        {new Date().getFullYear()}{" "}
+      </Typography>
     </div>
   );
 }

@@ -5,7 +5,9 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import EspaceSamplePicture from "../../images/espace_sample_picture.jpg";
+import Index1 from "../../images/index_1.jpg";
+import Index2 from "../../images/index_2.jpg";
+import Index3 from "../../images/index_3.jpg";
 import ProductCurvyLines from "../../images/productCurvyLines.png";
 import IndexIcon1 from "../../images/index-icon-1.svg";
 import IndexIcon2 from "../../images/index-icon-2.svg";
@@ -71,26 +73,26 @@ function ProductHowItWorks(props) {
           className={classes.title}
           component="h2"
         >
-          Comment ça fonctionne
+          Fonctionnalités
         </Typography>
         <div>
           <Grid container spacing={5}>
             <Grid item xs={12} md={4}>
-              <img src={EspaceSamplePicture} alt="" className={classes.image} />
+              <img src={Index1} alt="" className={classes.image} />
               <div className={classes.item}>
               <img src={IndexIcon1} className={classes.imageIcon} />
                 <div className={classes.number}>Voir à distance</div>
               </div>
             </Grid>
             <Grid item xs={12} md={4}>
-              <img src={EspaceSamplePicture} className={classes.image} />
+              <img src={Index2} className={classes.image} />
               <div className={classes.item}>
                 <img src={IndexIcon2} className={classes.imageIcon} />
                 <div className={classes.number}>Couvrir tous les plateformes</div>
               </div>
             </Grid>
             <Grid item xs={12} md={4}>
-              <img src={EspaceSamplePicture} className={classes.image} />
+              <img src={Index3} className={classes.image} />
               <div className={classes.item}>
               <img src={IndexIcon3} className={classes.imageIcon} />
                 <div className={classes.number}>Personnaliser</div>

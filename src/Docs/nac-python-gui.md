@@ -419,11 +419,8 @@ storage.child(userUniqueId + "/" + str(timeStamp)).put('image_raw/'+ str(timeSta
 
 ## Références
 
-•      [nhorvath/Pyrebase4: A simple python wrapper for the Firebase API. (github.com)](https://github.com/nhorvath/Pyrebase4)
-
-•      [Firebase Realtime Database (google.com)](https://firebase.google.com/docs/database?authuser=0)
-
-•      [Cloud Storage | Firebase (google.com)](https://firebase.google.com/docs/storage?authuser=0)
-
-•      https://firebase.google.com/docs/database/rest/structure-data
+- [nhorvath/Pyrebase4: A simple python wrapper for the Firebase API. (github.com)](https://github.com/nhorvath/Pyrebase4)
+- [Firebase Realtime Database (google.com)](https://firebase.google.com/docs/database?authuser=0)
+- [Cloud Storage | Firebase (google.com)](https://firebase.google.com/docs/storage?authuser=0)
+- [https://firebase.google.com/docs/database/rest/structure-data](https://firebase.google.com/docs/database/rest/structure-data)
 

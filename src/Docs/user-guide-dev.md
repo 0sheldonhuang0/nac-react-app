@@ -2,7 +2,7 @@
 
 Les utilisateurs peuvent accéder à la version en ligne de l'application NAC via le lien ci-dessous et suivre le mode d’emploi sur le site :
 
-- [https://nac-app.netlify.app](https://nac-app.netlify.app)
+- [https://xd.sh.cn/nac](https://xd.sh.cn/nac)
 
 Les développeurs peuvent trouver les codes sources de ce projet via les sites suivants :
 
@@ -10,13 +10,13 @@ Les développeurs peuvent trouver les codes sources de ce projet via les sites s
 
 - [https://github.com/0sheldonhuang0/nac-python-gui](https://github.com/0sheldonhuang0/nac-python-gui  )  
 
-Après le téléchargement sous forme de fichier compressé (.zip) ou le clonage avec l'outil git, suivre les étapes sur [https://nac-app.netlify.app/nac-python-gui](https://nac-app.netlify.app/nac-python-gui) ou le mode d’emploi de cet article.
+Après le téléchargement sous forme de fichier compressé (.zip) ou le clonage avec l'outil git, suivre les étapes sur [https://xd.sh.cn/nac/nac-python-gui](https://xd.sh.cn/nac/nac-python-gui) ou le mode d’emploi de cet article.
 
 ### Les codes sources du NAC React Web App
 
 - [https://github.com/0sheldonhuang0/nac-react-app](https://github.com/0sheldonhuang0/nac-react-app) 
 
-Après le téléchargement sous forme de fichier compressé (.zip) ou le clonage avec l'outil git, suivre les étapes sur [https://nac-app.netlify.app/nac-react-app](https://nac-app.netlify.app/nac-react-app) ou le mode d’emploi de cet article.
+Après le téléchargement sous forme de fichier compressé (.zip) ou le clonage avec l'outil git, suivre les étapes sur [https://xd.sh.cn/nac/nac-react-app](https://xd.sh.cn/nac/nac-react-app) ou le mode d’emploi de cet article.
 
 ### La version en ligne de NAC React Web App
 

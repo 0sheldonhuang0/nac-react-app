@@ -12,16 +12,10 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import MainListItems, {secondaryListItems } from "../listItems";
-//import Helper from "/Helper";
-//import Steps from "/BasicNac/Steps";
-//import Welcome from "/BasicNac/Welcome";
-import logoAM84 from "../../images/logo-am-84.png";
+import MainListItems, { secondaryListItems } from "../listItems";
 
 import ProductHero from "../IndexPage/ProductHero";
 import ProductHowItWorks from "../IndexPage/ProductHowItWorks";
@@ -31,19 +25,25 @@ function Copyright() {
   return (
     <div>
       <Typography variant="overline" color="textSecondary" align="center">
-        {"Etudiants : "}
-        <Link color="inherit" href="https://xd.sh.cn/nac">
-          HUANG Xiaodong
+        {" by "}
+        <Link color="inherit" href="https://xd.sh.cn">
+          xd.sh.cn 不淡定的实验室
         </Link>
-        {" & LIU Huimin | Directeur : JEAN Camille"}
       </Typography>
       <Typography variant="body2" color="textSecondary" align="center">
-        <Link color="inherit" href="https://nac-app.netlify.app">
+        <Link color="inherit" href="https://xd.sh.cn/nac">
           Conception d'une application innovante pour mesurer et influer sur
           l'activité physique des NAC
         </Link>
       </Typography>
-      <img src={logoAM84} alt="AM-logo" className={classes.imageStyle} />
+      <Typography variant="overline" color="textSecondary" align="center">
+        {"Copyright © "}
+        <Link color="inherit" href="https://xd.sh.cn/">
+          不淡定的实验室 xd.sh.cn
+        </Link>
+        {" 2016-"}
+        {new Date().getFullYear()}{" "}
+      </Typography>
     </div>
   );
 }
@@ -191,7 +191,9 @@ export default function Dashboard() {
           </IconButton>
         </div>
         <Divider />
-        <List><MainListItems/></List>
+        <List>
+          <MainListItems />
+        </List>
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
@@ -200,9 +202,11 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <ProductHero />
         <ProductHowItWorks />
-        <Box pt={4}>
-        <Copyright />
-        </Box>
+        <Container maxWidth="lg" className={classes.container}>
+          <Box pt={4}>
+            <Copyright />
+          </Box>
+        </Container>
       </main>
     </div>
   );
