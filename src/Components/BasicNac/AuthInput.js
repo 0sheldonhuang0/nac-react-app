@@ -94,7 +94,7 @@ export default function AuthInput() {
         var errorMessage = error.message;
         console.log(errorCode);
         alert(
-          "Vous avez rencontré des erreurs! Il se peut que le nom d'utilisateur / mot de passe soit incorrect ou que vous n'ayez pas enregistré de compte."
+          "如果您是中国大陆用户，需要使用科学上网服务。否则，请检查您的用户名或密码。Vous avez rencontré des erreurs! Il se peut que le nom d'utilisateur / mot de passe soit incorrect ou que vous n'ayez pas enregistré de compte."
         );
       });
   }

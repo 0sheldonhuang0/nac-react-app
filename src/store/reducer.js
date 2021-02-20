@@ -1,5 +1,5 @@
 const initialState = {
-  content: "欢迎使用 nac-https://xd.sh.cn/nac",
+  content: "Bienvenue à utiliser - https://nac-app.netlify.app",
   userInfo: {
     name: undefined,
     email: undefined,

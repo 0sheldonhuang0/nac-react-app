@@ -219,7 +219,5 @@ function readUserImg(userEmail) {
 ## Références
 
 - [https://www.infoq.cn/article/1psaynhrx6ljme9vldta](https://www.infoq.cn/article/1psaynhrx6ljme9vldta)
-
 - [Ajoutez Firebase à votre projet JavaScript (google.com)](https://firebase.google.com/docs/web/setup?authuser=0#node.js-apps)
-
 - [https://firebase.google.com/docs/auth/web/start?authuser=0](https://firebase.google.com/docs/auth/web/start?authuser=0)

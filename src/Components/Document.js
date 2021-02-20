@@ -28,10 +28,11 @@ function Copyright() {
   const classes = useStyles();
   return (
     <div>
+    <div>
       <Typography variant="overline" color="textSecondary" align="center">
         {"Etudiants : "}
-        <Link color="inherit" href="https://xd.sh.cn/nac">
-        HUANG Xiaodong
+        <Link color="inherit" href="https://xd.sh.cn/">
+          HUANG Xiaodong
         </Link>
         {" & LIU Huimin | Directeur : JEAN Camille"}
       </Typography>
@@ -42,6 +43,7 @@ function Copyright() {
         </Link>
       </Typography>
       <img src={logoAM84} alt="AM-logo" className={classes.imageStyle} />
+    </div>
     </div>
   );
 }

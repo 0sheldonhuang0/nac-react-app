@@ -12,19 +12,15 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import MainListItems, {secondaryListItems } from "../listItems";
-//import Helper from "/Helper";
-//import Steps from "/BasicNac/Steps";
-//import Welcome from "/BasicNac/Welcome";
-import logoAM84 from "../../images/logo-am-84.png";
+import MainListItems, { secondaryListItems } from "../listItems";
 
 import ProductHero from "../IndexPage/ProductHero";
 import ProductHowItWorks from "../IndexPage/ProductHowItWorks";
+
+import logoAM84 from "../../images/logo-am-84.png";
 
 function Copyright() {
   const classes = useStyles();
@@ -32,7 +28,7 @@ function Copyright() {
     <div>
       <Typography variant="overline" color="textSecondary" align="center">
         {"Etudiants : "}
-        <Link color="inherit" href="https://xd.sh.cn/nac">
+        <Link color="inherit" href="https://xd.sh.cn/">
           HUANG Xiaodong
         </Link>
         {" & LIU Huimin | Directeur : JEAN Camille"}
@@ -191,7 +187,9 @@ export default function Dashboard() {
           </IconButton>
         </div>
         <Divider />
-        <List><MainListItems/></List>
+        <List>
+          <MainListItems />
+        </List>
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
@@ -200,9 +198,11 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <ProductHero />
         <ProductHowItWorks />
-        <Box pt={4}>
-        <Copyright />
-        </Box>
+        <Container maxWidth="lg" className={classes.container}>
+          <Box pt={4}>
+            <Copyright />
+          </Box>
+        </Container>
       </main>
     </div>
   );
