@@ -18,7 +18,7 @@ function Users() {
 
 export default function MainRouter() {
   return (
-    <Router>
+    <Router basename="nac">
       <div>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
